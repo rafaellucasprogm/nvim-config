@@ -118,6 +118,9 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+-- Remove fillchars
+vim.opt.fillchars = { eob = ' ' }
+
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -976,14 +979,6 @@ require('lazy').setup({
     },
   },
 })
-
--- Remove status line
-
--- vim.opt.laststatus = 0
--- vim.api.nvim_set_hl(0, 'Statusline', { link = 'Normal' })
--- vim.api.nvim_set_hl(0, 'StatuslineNC', { link = 'Normal' })
--- local str = string.rep('-', vim.api.nvim_win_get_width(0))
--- vim.opt.statusline = str
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,6 +1,5 @@
 local catppuccin = require('catppuccin.palettes').get_palette 'mocha'
 
--- Define custom bubbles theme based on Catppuccin Mocha
 local bubbles_theme = {
   normal = {
     a = { fg = catppuccin.red, bg = catppuccin.mantle },
@@ -17,10 +16,7 @@ local bubbles_theme = {
     c = { fg = catppuccin.overlay0, bg = catppuccin.mantle },
   },
 }
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -67,5 +63,14 @@ return {
   {
     'karb94/neoscroll.nvim',
     opts = {},
+  },
+
+  {
+    'letieu/btw.nvim',
+    config = function()
+      require('btw').setup {
+        text = '        ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀  ᓚ₍ ^. .^₎ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ',
+      }
+    end,
   },
 }
