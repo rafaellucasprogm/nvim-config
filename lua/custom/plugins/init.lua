@@ -65,12 +65,33 @@ return {
     opts = {},
   },
 
+  -- {
+  --   'letieu/btw.nvim',
+  --   config = function()
+  --     require('btw').setup {
+  --       text = 'ᓚ₍ ^. .^₎',
+  --     }
+  --   end,
+  -- },
+
   {
-    'letieu/btw.nvim',
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('btw').setup {
-        text = '        ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀  ᓚ₍ ^. .^₎ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ✿ ❀ ',
+      require('oil').setup {
+        default_file_explorer = true,
+        skip_confirm_for_simple_edits = true,
+        view_options = {
+          natural_order = true,
+        },
       }
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
     end,
+  },
+  {
+    'xzbdmw/colorful-menu.nvim',
+    opts = {},
   },
 }

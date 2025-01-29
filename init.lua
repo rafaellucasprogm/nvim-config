@@ -106,7 +106,6 @@ vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
-
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
@@ -772,6 +771,34 @@ require('lazy').setup({
       luasnip.config.setup {}
       luasnip.filetype_extend('htmldjango', { 'html' })
 
+      local cmp_kinds = {
+        Text = ' ',
+        Method = ' ',
+        Function = ' ',
+        Constructor = ' ',
+        Field = ' ',
+        Variable = ' ',
+        Class = ' ',
+        Interface = ' ',
+        Module = ' ',
+        Property = ' ',
+        Unit = ' ',
+        Value = ' ',
+        Enum = ' ',
+        Keyword = ' ',
+        Snippet = ' ',
+        Color = ' ',
+        File = ' ',
+        Reference = ' ',
+        Folder = ' ',
+        EnumMember = ' ',
+        Constant = ' ',
+        Struct = ' ',
+        Event = ' ',
+        Operator = ' ',
+        TypeParameter = ' ',
+      }
+
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -780,6 +807,22 @@ require('lazy').setup({
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
 
+        formatting = {
+          fields = { 'kind', 'abbr' },
+          format = function(entry, vim_item)
+            local highlights_info = require('colorful-menu').cmp_highlights(entry)
+
+            vim_item.kind = cmp_kinds[vim_item.kind] or ''
+            -- better to fallback to use default `vim_item.abbr`. What this plugin
+            -- offers is two fields: `vim_item.abbr_hl_group` and `vim_item.abbr`.
+            if highlights_info ~= nil then
+              vim_item.abbr_hl_group = highlights_info.highlights
+              vim_item.abbr = highlights_info.text
+            end
+
+            return vim_item
+          end,
+        },
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
@@ -885,9 +928,6 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      require('mini.files').setup()
-      vim.keymap.set('n', '<leader>e', ':lua MiniFiles.open() <CR>', { desc = 'Open mini files' })
-
       require('mini.move').setup()
 
       -- Simple and easy statusline.
@@ -982,6 +1022,9 @@ require('lazy').setup({
     },
   },
 })
+
+-- If in windows uncomment the line bellow
+-- require('nvim-treesitter.install').compilers = { 'clang' }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
