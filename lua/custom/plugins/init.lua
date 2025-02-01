@@ -16,7 +16,6 @@ local bubbles_theme = {
     c = { fg = catppuccin.overlay0, bg = catppuccin.mantle },
   },
 }
-
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -76,6 +75,9 @@ return {
 
   {
     'stevearc/oil.nvim',
+    keys = {
+      { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+    },
     ---@module 'oil'
     ---@type oil.SetupOpts
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -87,7 +89,6 @@ return {
           natural_order = true,
         },
       }
-      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
     end,
   },
   {
@@ -103,6 +104,9 @@ return {
       -- Only one of these is needed.
       'nvim-telescope/telescope.nvim', -- optional
     },
-    config = true,
+    keys = {
+      { '<leader>tn', '<cmd>Neogit<cr>', desc = 'Toggle Neogit' },
+    },
+    opts = {},
   },
 }
