@@ -1,5 +1,4 @@
 local catppuccin = require('catppuccin.palettes').get_palette 'mocha'
-
 local bubbles_theme = {
   normal = {
     a = { fg = catppuccin.red, bg = catppuccin.mantle },
@@ -107,6 +106,13 @@ return {
     keys = {
       { '<leader>tn', '<cmd>Neogit<cr>', desc = 'Toggle Neogit' },
     },
+    opts = {},
+  },
+  {
+    'aileot/ex-colors.nvim',
+    lazy = true,
+    cmd = 'ExColors',
+    ---@type ExColors.Config
     opts = {},
   },
 }
