@@ -108,11 +108,15 @@ return {
     },
     opts = {},
   },
-  {
-    'aileot/ex-colors.nvim',
-    lazy = true,
-    cmd = 'ExColors',
-    ---@type ExColors.Config
-    opts = {},
-  },
+  -- {
+  --   'aileot/ex-colors.nvim',
+  --   lazy = true,
+  --   cmd = 'ExColors',
+  --   ---@type ExColors.Config
+  --   opts = {},
+  -- },
+  -- {
+  --   'mluders/comfy-line-numbers.nvim',
+  --   opts = {},
+  -- },
 }
