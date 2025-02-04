@@ -433,7 +433,7 @@ require('lazy').setup({
           progress = {
             display = {
               render_limit = 0,
-              done_icon = '✿',
+              done_icon = '🌸',
             },
           },
         },
@@ -649,8 +649,6 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
-
-      vim.cmd.colorscheme 'ex-catppuccin-mocha'
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -881,14 +879,12 @@ require('lazy').setup({
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
     'catppuccin/nvim',
     -- priority = 1000, -- Make sure to load this before all the other start plugins.
-    -- init = function()
-    -- Load the colorscheme here.
-    -- Like many other themes, this one has different styles, and you could load
-    -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-
-    -- You can configure highlights by doing something like:
-    -- vim.cmd.hi 'Comment gui=none'
-    -- end,
+    init = function()
+      -- Load the colorscheme here.
+      -- Like many other themes, this one has different styles, and you could load
+      vim.cmd 'colorscheme catppuccin-mocha'
+      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+    end,
   },
 
   -- Highlight todo, notes, etc in comments
