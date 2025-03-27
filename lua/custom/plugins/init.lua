@@ -63,14 +63,12 @@ return {
     opts = {},
   },
 
-  -- {
-  --   'letieu/btw.nvim',
-  --   config = function()
-  --     require('btw').setup {
-  --       text = 'ᓚ₍ ^. .^₎',
-  --     }
-  --   end,
-  -- },
+  {
+    'letieu/btw.nvim',
+    config = function()
+      require('btw').setup()
+    end,
+  },
 
   {
     'stevearc/oil.nvim',
@@ -92,20 +90,6 @@ return {
   },
   {
     'xzbdmw/colorful-menu.nvim',
-    opts = {},
-  },
-  {
-    'NeogitOrg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim', -- required
-      'sindrets/diffview.nvim', -- optional - Diff integration
-
-      -- Only one of these is needed.
-      'nvim-telescope/telescope.nvim', -- optional
-    },
-    keys = {
-      { '<leader>tn', '<cmd>Neogit<cr>', desc = 'Toggle Neogit' },
-    },
     opts = {},
   },
   -- {
