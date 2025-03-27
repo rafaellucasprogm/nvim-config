@@ -239,7 +239,7 @@ require('lazy').setup({
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     opts = {
-      delay = 0,
+      -- delay = 0,
       icons = {
         -- set icon mappings to true if you have a Nerd Font
         mappings = vim.g.have_nerd_font,
@@ -564,7 +564,9 @@ require('lazy').setup({
       })
 
       -- Change diagnostic symbols in the sign column (gutter)
+
       vim.diagnostic.config {
+        virtual_lines = false,
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -577,6 +579,7 @@ require('lazy').setup({
           },
         } or {},
         virtual_text = {
+          current_line = true,
           source = 'if_many',
           spacing = 2,
           format = function(diagnostic)
@@ -653,6 +656,8 @@ require('lazy').setup({
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_installation = false,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -706,7 +711,9 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettier' },
+        typescript = { 'prettier' },
       },
     },
   },
@@ -753,6 +760,7 @@ require('lazy').setup({
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
       luasnip.filetype_extend('htmldjango', { 'html' })
+      luasnip.filetype_extend('typescriptreact', { 'html' })
 
       local cmp_kinds = {
         Text = ' ',
@@ -792,6 +800,7 @@ require('lazy').setup({
 
         formatting = {
           fields = { 'kind', 'abbr' },
+          expandable_indicator = true,
           format = function(entry, vim_item)
             local highlights_info = require('colorful-menu').cmp_highlights(entry)
 
@@ -903,7 +912,7 @@ require('lazy').setup({
       --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
-
+      require('mini.indentscope').setup()
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
