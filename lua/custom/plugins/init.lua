@@ -63,13 +63,13 @@ return {
     opts = {},
   },
 
-  {
-    'letieu/btw.nvim',
-    config = function()
-      require('btw').setup()
-    end,
-  },
-
+  -- {
+  --   'letieu/btw.nvim',
+  --   config = function()
+  --     require('btw').setup()
+  --   end,
+  -- },
+  --
   {
     'stevearc/oil.nvim',
     keys = {
@@ -99,8 +99,8 @@ return {
   --   ---@type ExColors.Config
   --   opts = {},
   -- },
-  -- {
-  --   'mluders/comfy-line-numbers.nvim',
-  --   opts = {},
-  -- },
+  {
+    'mluders/comfy-line-numbers.nvim',
+    opts = {},
+  },
 }
